@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import manga styles */
+@import './manga.css';
+
+/* Add Comic Sans MS as the default font for the entire project */
+@layer base {
+  html {
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+  }
+}
+
+/* Fix for overscroll color */
+html {
+    scroll-snap-type: y mandatory;
+}
+
+body {
+    background: #EEF4FF;
+    font-family: "Comic Sans MS", "Comic Sans", cursive !important;
+}
+
+/* Make sure all elements use Comic Sans */
+h1, h2, h3, h4, h5, h6, p, span, div, button, input, textarea, select, option {
+    font-family: "Comic Sans MS", "Comic Sans", cursive !important;
+}
+
+.snap {
+    scroll-snap-align: center;
+}
+
+.top-gradient {
+    background-image: radial-gradient(circle at 50% -250vh, rgba(142, 121, 255, 0.2), transparent 70%);
+}
+
+.hero-text {
+    background: linear-gradient(135deg, #6366F1 10%, #A5B4FC 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+/* 3D Perspective Effects */
+.perspective-1000 {
+    perspective: 1000px;
+}
+
+.preserve-3d {
+    transform-style: preserve-3d;
+}
+
+.transform-3d {
+    transform: translateZ(20px);
+}
+
+.team-card {
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    will-change: transform;
+}
+
+.team-card:hover {
+    transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
+}
+
+/* Add depth shadow */
+.shadow-3d {
+    box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.3);
+}
+
+/* Better blur effect for modals */
+.backdrop-blur {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+/* Custom line clamp for bios */
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.crescent {
+    box-sizing: border-box;
+    width: 100%;
+    height: 1680px;
+    background: #EEF4FF;
+    border-top-left-radius: 125px;
+    border-top-right-radius: 125px;
+    border-top: 1px solid transparent;
+    background-image: linear-gradient(#EEF4FF, #EEF4FF), linear-gradient(to right, transparent -20%, rgba(127, 103, 243, 0.2) 70%, transparent);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+
+@media (min-width: 640px) {
+    .crescent {
+        border-top-left-radius: 200px;
+        border-top-right-radius: 200px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .crescent {
+        border-top-left-radius: 500px;
+        border-top-right-radius: 500px;
+    }
+}
+
+.rotation-container {
+    -webkit-text-fill-color: #8E79FF;
+    text-fill-color: unset;
+    color: #8E79FF;
+    position: relative;
+    perspective: 10000px;
+    transform-style: preserve-3d;
+    animation: text-rotate 6s ease infinite;
+}
+
+.rotation-container p {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: #8E79FF;
+    -webkit-backface-visibility: hidden;
+    text-align: center;
+}
+
+.rotation-container p:nth-child(1) {
+    transform: rotateX(360deg) translateZ(25px);
+}
+
+.rotation-container p:nth-child(2) {
+    transform: rotateX(270deg) translateZ(25px);
+}
+
+.rotation-container p:nth-child(3) {
+    transform: rotateX(180deg) translateZ(25px);
+}
+
+.rotation-container p:nth-child(4) {
+    transform: rotateX(90deg) translateZ(25px);
+}
+
+
+@keyframes text-rotate {
+    0% {
+        transform: rotateX(0deg);
+        width: 2em;
+    }
+    25% {
+        transform: rotateX(90deg);
+        width: 3em;
+    }
+    50% {
+        transform: rotateX(180deg);
+        width: 4em;
+    }
+    75% {
+        transform: rotateX(270deg);
+        width: 4em;
+    }
+    100% {
+        transform: rotateX(360deg);
+        width: 2em;
+    }
+}
+
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #8E79FF;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: load-rotation 1s linear infinite;
+}
+
+@keyframes load-rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+} 
